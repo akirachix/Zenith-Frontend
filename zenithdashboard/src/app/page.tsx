@@ -1,11 +1,11 @@
-import Layout from './components/Layout';
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+import React from 'react';
+import Sidebar from './components/Sidebar';
+const Dashboard = () => {
   return (
-      <Layout>
-        <div className="flex">
-          <main className="flex-1">{children}</main>
-        </div>
-        </Layout>
+    <div>
+      
+    </div>
   );
-}
+};
+
+export default Dashboard;
