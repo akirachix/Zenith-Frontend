@@ -1,12 +1,12 @@
-import React from 'react';
 import Layout from './components/Layout';
 
-const Dashboard = () => {
-  return (
-    <div>
- <Layout/>
-    </div>
-  );
-};
 
-export default Dashboard;
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+      <Layout>
+        <div className="flex">
+          <main className="flex-1">{children}</main>
+        </div>
+        </Layout>
+  );
+}
