@@ -15,7 +15,7 @@ export const useNotifications = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setNotifications(data);
+        setNotifications( data );
       } catch (error) {
         return error
         

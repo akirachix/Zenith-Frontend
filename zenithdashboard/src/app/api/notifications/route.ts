@@ -36,7 +36,7 @@ export async function POST(request: Request) {
     }
     const data = await response.json();
     return NextResponse.json(data, { status: 201 });
-  } catch (error) {
+  } catch ( error ) {
     return NextResponse.json({ error: 'Failed to create notification' }, { status: 500 });
   }
 }
