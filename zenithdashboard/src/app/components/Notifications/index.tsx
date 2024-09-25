@@ -1,17 +1,29 @@
 
 'use client';
+
 import React, { useState } from 'react';
 import { Bell } from 'lucide-react';
 import { useNotifications } from '../hooks/useGetNotifications';
 
-const NotificationCard = ({ message, created_at }) => (
+interface Notification {
+  id: string | number;
+  message: string;
+  created_at: string;
+}
+
+interface NotificationCardProps {
+  message: string;
+  created_at: string;
+}
+
+const NotificationCard: React.FC<NotificationCardProps> = ({ message, created_at }) => (
   <div className="bg-gray-50 p-4 rounded-lg shadow flex justify-between items-center">
     <p className="text-gray-800">{message}</p>
     <p className="text-sm text-gray-500">{new Date(created_at).toLocaleString()}</p>
   </div>
 );
 
-const AquasenseDashboard = () => {
+const AquasenseDashboard: React.FC = () => {
   const [isEnabled, setIsEnabled] = useState(true);
   const notifications = useNotifications();
 
@@ -37,8 +49,12 @@ const AquasenseDashboard = () => {
         </div>
         {isEnabled ? (
           <div className="space-y-4">
-            {notifications.map((notification) => (
-              <NotificationCard key={notification.id} message={notification.message} created_at={notification.created_at} />
+            {notifications.map((notification: Notification) => (
+              <NotificationCard
+                key={notification.id}
+                message={notification.message}
+                created_at={notification.created_at}
+              />
             ))}
           </div>
         ) : (
