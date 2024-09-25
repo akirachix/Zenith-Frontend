@@ -35,6 +35,8 @@ export default function SignUpForm() {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false); 
 
+  const router = useRouter(); // Using useRouter for redirection
+
   const {
     register,
     handleSubmit,
@@ -56,6 +58,7 @@ export default function SignUpForm() {
         setTimeout(() => {
           reset();
           setSuccessMessage(null);
+          router.push("/login"); // Redirect to login page after successful registration
         }, 2000);
       }
     } catch (error: any) {
@@ -179,7 +182,7 @@ export default function SignUpForm() {
 
           
             <div className="mb-4">
-              <label htmlFor="role" className="block text-[24px]  text-black capitalize mb-2 text-gray-700">
+              <label htmlFor="role" className="block text-[24px] text-black capitalize mb-2 text-gray-700">
                 Role:
               </label>
               <select
