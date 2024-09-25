@@ -17,6 +17,7 @@ export const useNotifications = () => {
         const data = await response.json();
         setNotifications(data);
       } catch (error) {
+        return error
         
       }
     };

@@ -9,7 +9,7 @@ export const fetchNotifications = async () => {
     }
     return await response.json();
   } catch (error) {
-    return [];
+    return error;
   }
 };
 export const createNotification = async (message: string) => {
