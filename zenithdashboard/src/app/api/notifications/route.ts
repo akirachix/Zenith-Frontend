@@ -1,7 +1,3 @@
-
-
-
-
 import { NextResponse } from 'next/server';
 
 const API_URL = `${process.env.BASE_URL}/api/notifications/`;
@@ -20,7 +16,7 @@ export async function GET() {
     }
     const data = await response.json();
     return NextResponse.json(data, { status: 200 });
-  } catch (_error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to fetch notifications' }, { status: 500 });
   }
 }
@@ -40,9 +36,7 @@ export async function POST(request: Request) {
     }
     const data = await response.json();
     return NextResponse.json(data, { status: 201 });
-  } catch (_error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to create notification' }, { status: 500 });
   }
 }
-
-
