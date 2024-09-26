@@ -1,10 +1,16 @@
-import React from 'react';
-const Dashboard = () => {
-  return (
-    <div>
-      
-    </div>
-  );
-};
 
-export default Dashboard;
+ 
+
+
+import React from 'react';
+import AquasenseDashboard from './components/Notifications';
+ import Layout from "./components/Layout";
+
+export default function Home() {
+  return (
+       <Layout>
+        
+       <AquasenseDashboard/> 
+     </Layout>  
+  );
+}
