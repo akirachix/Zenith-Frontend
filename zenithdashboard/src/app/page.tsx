@@ -1,7 +1,7 @@
-import Image from "next/image";
+
 
 import RegisterForm from "./signUp/page";
-import SmartDrainHero from "./Homepage";
+
 
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
     <div>
    
     <RegisterForm/>
-    {/* <SmartDrainHero/> */}
+    
     
     </div>
   );

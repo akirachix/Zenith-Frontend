@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
   
   catch (error) {
     return NextResponse.json(
-      { error: 'An error occurred. Please try again later.' },
+      { error: 'An error occurred. Please try again later.'+ (error as Error).message },
       { status: 500 }
     );
   }

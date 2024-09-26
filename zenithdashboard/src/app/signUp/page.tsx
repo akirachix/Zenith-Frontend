@@ -31,11 +31,10 @@ const signupSchema = yup.object().shape({
 
 export default function SignUpForm() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [apiError, setApiError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false); 
 
-  const router = useRouter(); // Using useRouter for redirection
+  const router = useRouter(); 
 
   const {
     register,
@@ -58,21 +57,12 @@ export default function SignUpForm() {
         setTimeout(() => {
           reset();
           setSuccessMessage(null);
-          router.push("/login"); // Redirect to login page after successful registration
+          router.push("/login"); 
         }, 2000);
       }
-    } catch (error: any) {
-      console.error('Registration error:', error);
-
-      if (error instanceof Response) {
-        const errorData = await error.json().catch(() => null);
-        const errorMessage = errorData?.message || 'Something went wrong during registration.';
-        setErrorMessage(errorMessage);
-      } else if (error instanceof Error) {
-        setErrorMessage(error.message || 'Something went wrong');
-      } else {
-        setErrorMessage('An unknown error occurred');
-      }
+    } catch (error) {
+   
+      setErrorMessage((error as Error).message);
     }
   };
 
@@ -220,11 +210,7 @@ export default function SignUpForm() {
                 {successMessage}
               </p>
             )}
-             {apiError && (
-              <p className="mt-2 text-red-500 text-center text-sm">
-                {apiError}
-              </p>
-            )}
+         
           </div>
           </form>
 

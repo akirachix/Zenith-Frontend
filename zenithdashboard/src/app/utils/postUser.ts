@@ -1,5 +1,4 @@
 
-import { UserData } from "./types";
 
 
 const url = '/api/users/register'
@@ -25,8 +24,8 @@ export const postUser = async (UserData: { first_name: string; last_name: string
 
     const result = await response.json();
     return { data: result };
-  } catch (error: any) {
-    return { error: error.message || 'An unexpected error occurred. Please try again later.' };
+  } catch (error) {
+    return { error: (error as Error).message || 'An unexpected error occurred. Please try again later.' };
   }
 };
 
