@@ -2,7 +2,6 @@
   "name": "zenithdashboard",
   "version": "0.1.0",
   "private": true,
-  
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,13 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "chart.js": "^4.4.4",
     "lucide-react": "^0.445.0",
     "next": "14.2.12",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
-    "recharts": "^2.12.7"
+    "react-hook-form": "^7.53.0",
+    "recharts": "^2.12.7",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",
