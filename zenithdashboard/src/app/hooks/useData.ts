@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { processDrainageData, submitDrainageData } from '../Utilis/drainage';
+import { processDrainageData } from '../utils/drainage';
 export const useDrainageData = () => {
   const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -18,12 +18,6 @@ export const useDrainageData = () => {
     };
     fetchData();
   }, []);
-  const submitData = async (payload: any) => {
-    try {
-      await submitDrainageData(payload);
-    } catch (error: any) {
-      console.error('Error submitting data:', error.message);
-    }
-  };
-  return { data, loading, error, submitData };
+
+  return { data, loading, error };
 };

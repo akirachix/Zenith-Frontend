@@ -12,23 +12,22 @@ const Sidebar = () => {
       <div
         onClick={() => router.push(path)}
         className={`flex items-center py-2 px-4 rounded cursor-pointer ${
-          isActive ? 'bg-blue-600' : 'hover:bg-blue-500 transition-colors duration-200'
-        }`}
-      >
+          isActive ? 'bg-[#008FFF]' : 'hover:bg-[#008FFF] transition-colors duration-200'
+        }`} >
         {icon}
         <span className="ml-3 text-lg">{label}</span>
       </div>
     );
   };
   return (
-    <div className="w-70 bg-[#008FFF] text-white p-5 h-screen font-serif ">
+    <div className="w-100 bg-[#008FFF] text-white p-5 h-screen font-serif ">
       <div className="flex items-center mb-[100px]">
-        <Image src="/images/logo.png" alt="AquaSense Logo" width={200} height={150} className="mr-20" />
+        <Image src="/images/logo.png" alt="AquaSense Logo" width={200} height={200} className="mr-20" />
       </div>
       <nav className="space-y-9">
-        <SidebarItem icon={<Home size={24} />} label="Home" path="/"/>
-        <SidebarItem icon={<ChartLine size={20} />} label="RealTime Visualization" path="/realtime" />
-        <SidebarItem icon={<BarChart2 size={24} />} label="System Performance" path="/performance" />
+        <SidebarItem icon={<Home size={24} />} label="Home" path="/dashboard"/>
+        <SidebarItem icon={<ChartLine size={20} />} label="RealTimeVisualization" path="/realtime" />
+        <SidebarItem icon={<BarChart2 size={24} />} label="System Performance"  path="/"/>
         <SidebarItem icon={<Users size={24} />} label="User" path="/user" />
         <SidebarItem icon={<Settings size={24} />} label="Settings" path="/settings" />
       </nav>
