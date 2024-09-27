@@ -11,7 +11,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useDrainageData } from "../hooks/useData";
-import Layout from "../Layout";
+import Layout from "../components/Layout";
+
 const Dashboard = () => {
   const { data, loading, error } = useDrainageData();
 
@@ -38,14 +39,14 @@ const Dashboard = () => {
   const lineChartData = processLineChartData(data);
   return (
     <Layout>
-      <div className="flex h-screen bg-white  ">
+      <div className="flex  bg-white  overflow-hidden">
         <div className="flex-1  ml-[20%]">
-          <header className="flex justify-between items-center mb-8">
+          <header className="flex justify-between items-center ">
             <div className="relative"></div>
             <div className="flex items-center ">
               <button className="mr-10">
                 <svg
-                  className="w-6 h-6 text-blue-500"
+                  className="w-6 h-6 text-blue-500 "
                   fill="#3B82F6"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -61,7 +62,7 @@ const Dashboard = () => {
               </button>
               <button>
                 <svg
-                  className="w-6 h-6 text-blue-500"
+                  className="w-6 h-6 text-blue-500 "
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -81,7 +82,7 @@ const Dashboard = () => {
             <h3 className="text-3xl  font-semibold  text-center text-blue-500  items-center ml-[-390px] mb-12 ">
               Overview
             </h3>
-            <h2 className="text-xl  font-semibold  text-center   items-center mt-8 ml-[-360px]">
+            <h2 className="text-xl  font-semibold  text-center   items-center  ml-[-360px]">
               Rate of blockage in drainage system
             </h2>
             <div className="grid grid-cols-2">

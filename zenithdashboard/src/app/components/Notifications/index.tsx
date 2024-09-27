@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { Bell } from 'lucide-react';
-import { useNotifications } from '../hooks/useGetNotifications';
+import { useNotifications } from '../../hooks/useGetNotifications';
 
 interface Notification {
   id: string | number;
