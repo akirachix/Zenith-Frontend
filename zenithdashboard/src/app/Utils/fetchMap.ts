@@ -1,4 +1,5 @@
 export interface PerformanceData {
+    address: ReactNode;
     id: number;
     system_performance: string; 
     date_of_record: string;

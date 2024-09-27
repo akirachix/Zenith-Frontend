@@ -1,13 +1,5 @@
-export interface PerformanceData {
-  type: ReactNode;
-  address: string;
-  latitude: number;
-  longitude: number;
-  id: number;
-  system_performance: string;
-  date_of_record: string;
-  status: string;
-}
+import { PerformanceData } from "./types";
+
 
 export const fetchPerformance = async (): Promise<PerformanceData[]> => {
   try {
