@@ -28,10 +28,7 @@ const Performance = () => {
       setRecentPerformanceData(sortedData);
     }
   }, [allPerformanceData]);
-
-
-
-  return (
+return (
     <div className="xl:w-11/12 p-4 ml-12 mt-8 border border-black nesthubmax:mt-96 nesthubmax:w-96">
       {loading && <div>Loading performance data...</div>}
       {error && <div className="text-red-500">{error}</div>}

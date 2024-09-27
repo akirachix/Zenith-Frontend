@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 
 const fetchCoordinates = async (systemPerformance: string): Promise<{ latitude: number; longitude: number }> => {
@@ -10,7 +11,7 @@ const fetchCoordinates = async (systemPerformance: string): Promise<{ latitude: 
         });
 
         if (!response.ok) {
-            throw new Error(`Failed to fetch coordinates. Status: ${response.status} - ${response.statusText}`);
+            throw new Error(`Failed to fetch coordinates.`);
         }
 
         const coordinates = await response.json();

@@ -39,7 +39,7 @@ export async function GET(request: Request) {
       });
     } catch (error) {
       return new Response((error as Error).message, {
-        status: 500,
+        
       });
     }
   }
