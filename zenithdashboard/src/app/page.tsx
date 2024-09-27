@@ -1,13 +1,14 @@
 
-import React from 'react';
-import AquasenseDashboard from './components/Notifications';
- import Layout from "./components/Layout";
+import React from "react";
+import Dashboard from "./dashboard/page";
+
 
 export default function Home() {
   return (
-       <Layout>
-        
-       <AquasenseDashboard/> 
-     </Layout>  
+    <div>
+      <Dashboard />
+
+    
+    </div>
   );
 }

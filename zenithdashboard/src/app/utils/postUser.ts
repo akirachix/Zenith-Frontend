@@ -1,8 +1,6 @@
 
 
-
 const url = '/api/users/register'
-
 
 export const postUser = async (UserData: { first_name: string; last_name: string; phone_number: string; email: string; password: string; role:string;}) => {
   try {
