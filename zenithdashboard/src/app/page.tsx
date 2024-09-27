@@ -1,4 +1,4 @@
-'use client';
+
 import  "./dashboard/page";
 import React from "react";
 
