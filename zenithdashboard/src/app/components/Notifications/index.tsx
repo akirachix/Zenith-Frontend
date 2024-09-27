@@ -5,6 +5,7 @@ import { Bell } from 'lucide-react';
 
 import { useGetNotifications } from '@/app/hooks/useGetNotifications';
 
+
 interface Notification {
   id: string | number;
   message: string;
