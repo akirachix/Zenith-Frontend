@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { processDrainageData } from '../utils/drainage';
 export const useDrainageData = () => {
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {

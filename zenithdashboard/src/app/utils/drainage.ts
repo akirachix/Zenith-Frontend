@@ -1,4 +1,5 @@
 const url = '/api/data-monitoring/';
+
 export const processDrainageData = async () => {
   try {
     const response = await fetch(url, {
