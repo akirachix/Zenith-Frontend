@@ -1,63 +1,20 @@
-
-
 import { useState, useEffect } from 'react';
 
-const API_URL = '/api/notifications/';
+import { fetchNotifications } from '@/app/utils/userNotifications';
 
-export const useNotifications = () => {
+export const useGetNotifications = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        const response = await fetch(API_URL);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
+    const getNotifications = async () => {
+      const data = await fetchNotifications();
+      if (data) {
         setNotifications(data);
-      } catch (_error) {
-        // Error handled silently
       }
     };
 
-    fetchNotifications();
+    getNotifications();
   }, []);
 
   return notifications;
 };
-
-export const fetchNotifications = async () => {
-  try {
-    const response = await fetch(API_URL);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return await response.json();
-  } catch (_error) {
-    return null;
-  }
-};
-
-export const createNotification = async (message: string) => {
-  try {
-    const response = await fetch(API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message }),
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return await response.json();
-  } catch (_error) {
-    return null;
-  }
-};
-
-
-
-
-

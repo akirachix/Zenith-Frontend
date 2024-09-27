@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+
 const API_URL = '/api/notifications/';
 
 export const useNotifications = () => {
