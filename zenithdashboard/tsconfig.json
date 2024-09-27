@@ -21,7 +21,11 @@
       "@/*": ["./src/*"]
     }
   },
+
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/System-performance/dashboard.js", "src/global.d.ts" ],
+
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/utils/userLogin.ts"],
+
   "exclude": ["node_modules"]
 
 }
