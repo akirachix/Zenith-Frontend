@@ -1,9 +1,10 @@
-
 'use client';
 
 import React, { useState } from 'react';
 import { Bell } from 'lucide-react';
-import { useNotifications } from '../../hooks/useGetNotifications';
+
+import { useGetNotifications } from '@/app/hooks/useGetNotifications';
+
 
 interface Notification {
   id: string | number;
@@ -25,7 +26,7 @@ const NotificationCard: React.FC<NotificationCardProps> = ({ message, created_at
 
 const AquasenseDashboard: React.FC = () => {
   const [isEnabled, setIsEnabled] = useState(true);
-  const notifications = useNotifications();
+  const notifications = useGetNotifications();
 
   return (
     <div className="min-h-screen bg-gray-100 p-10">
