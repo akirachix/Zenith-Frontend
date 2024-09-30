@@ -1,19 +1,12 @@
-
 import React from "react";
 import Dashboard from "./dashboard/page";
-
-import Login from './login/page';
+import Landinpage from "./landingpage/page";
+import Layout from "./components/Layout";
 
 export default function Home() {
   return (
     <div>
-      <Dashboard />
-      <Login/>
-    
+      <Landinpage />
     </div>
-
- 
-
-
-
-  )}
+  );
+}
