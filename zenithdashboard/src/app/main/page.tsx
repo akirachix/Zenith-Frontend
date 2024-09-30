@@ -2,8 +2,8 @@
 
 import { useSensorData } from "../components/hooks/useGetMap";
 import Layout from "../components/Layout";
-import Map from "../map/page";
-import SensorTable from "../performance/page";
+import Map from "../map";
+import SensorTable from "../performance";
 const HomePage = () => {
   const { sensorData, loading, error } = useSensorData();
   if (loading) return <p className="text-center">Loading...</p>;

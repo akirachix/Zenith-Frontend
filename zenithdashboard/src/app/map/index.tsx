@@ -14,8 +14,11 @@ declare global {
   }
 }
 
-// Directly define the component without using MapProps
-const Map = ({ sensorData }: { sensorData: Sensor[] }) => {
+interface MapProps {
+  sensorData: Sensor[];
+}
+
+const Map: React.FC<MapProps> = ({ sensorData }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const mapRef = useRef<HTMLDivElement | null>(null);
   const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
