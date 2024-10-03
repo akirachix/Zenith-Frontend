@@ -2,7 +2,7 @@
 
 import { useSensorData } from "../components/hooks/useGetMap";
 import Layout from "../components/Layout";
-import Map from "../map";
+import Map from "../components/map";
 import SensorTable from "../performance";
 const HomePage = () => {
   const { sensorData, loading, error } = useSensorData();

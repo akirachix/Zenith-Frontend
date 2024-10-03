@@ -6,9 +6,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import * as yup from "yup";
-import { setCookie } from 'nookies';
+import { setCookie } from "nookies";
 
-import { postUser } from "../components/utils/postUser"; 
+import { postUser } from "../components/utils/postUser";
 
 interface UserData {
   first_name: string;
@@ -54,25 +54,26 @@ export default function SignUpForm() {
   const onSubmit = async (data: UserData) => {
     try {
       const response = await postUser(data);
-      console.log (response);
+      console.log(response);
 
       if (response.error) {
         setErrorMessage(response.error);
       } else if (response.data) {
         const { token, userId } = response.data;
 
-        setCookie(null, 'authToken', token, { 
-          maxAge: 60 * 60 * 24 * 7, 
-          path: '/' 
+        setCookie(null, "authToken", token, {
+          maxAge: 60 * 60 * 24 * 7,
+          path: "/",
         });
 
-        setCookie(null, 'userId', userId, { 
-          maxAge: 60 * 60 * 24 * 7, 
-          path: '/' 
+        setCookie(null, "userId", userId, {
+          maxAge: 60 * 60 * 24 * 7,
+          path: "/",
         });
 
-        
-        setSuccessMessage("Account created successfully! Redirecting to Login...");
+        setSuccessMessage(
+          "Account created successfully! Redirecting to Login..."
+        );
         setTimeout(() => {
           reset();
           setSuccessMessage(null);
@@ -96,7 +97,7 @@ export default function SignUpForm() {
           alt="People assembling puzzle"
           width={600}
           height={600}
-          className="max-w-full h-auto mt-32"
+          className="max-w-full h-auto mt-20"
         />
       </div>
       <div className="w-full md:w-1/2 flex items-start justify-center ">
@@ -233,7 +234,9 @@ export default function SignUpForm() {
                 <option value="Estate_Associate">Estate Associate</option>
               </select>
               {errors.role && (
-                <p className="text-red-500 text-xs mt-1">{errors.role.message}</p>
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.role.message}
+                </p>
               )}
             </div>
 
@@ -257,7 +260,7 @@ export default function SignUpForm() {
           <p className=" text-xl text-center">
             Already have an account?{" "}
             <a href="/login" className="text-blue-500 hover:underline">
-              Login 
+              Login
             </a>
           </p>
         </div>

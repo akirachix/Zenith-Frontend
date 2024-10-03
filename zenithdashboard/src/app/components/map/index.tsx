@@ -134,7 +134,7 @@ const Map: React.FC<MapProps> = ({ sensorData }) => {
         }}
       />
       <div
-        className='w-full ml-[-30%]'
+        className='w-full ml-[-30%] '
         ref={mapRef}
         style={{ height: '380px', width: '130%', marginTop: '10px' }}
       />
