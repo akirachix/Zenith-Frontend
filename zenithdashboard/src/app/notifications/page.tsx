@@ -2,7 +2,9 @@
 
 import React, { useState } from "react";
 import { Bell } from "lucide-react";
+
 import { useNotifications } from "../components/hooks/useGetNotifications";
+
 import Layout from "../components/Layout";
 
 interface Notification {
