@@ -90,26 +90,26 @@ export default function SignUpForm() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-white">
-      <div className="w-full md:w-1/2 flex items-center justify-center p-8">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-white">
+      <div className="w-full lg:w-1/2 flex items-center justify-center ">
         <Image
           src="/images/background.png"
           alt="People assembling puzzle"
           width={600}
           height={600}
-          className="max-w-full h-auto mt-20"
+          className="max-w-full h-auto  lg:"
         />
       </div>
-      <div className="w-full md:w-1/2 flex items-start justify-center ">
+      <div className="w-full lg:w-1/2 flex items-start justify-center lg:">
         <div className="max-w-md w-full">
-          <h2 className="text-[48px] font-bold mb-6 text-[#0088ff] text-center mt-10">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-[#0088ff] text-center ">
             Sign Up
           </h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 ">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
             <div>
               <label
                 htmlFor="firstName"
-                className="block font-medium text-gray-700 text-2xl"
+                className="block font-medium text-gray-700 text-lg lg:text-xl"
               >
                 First Name
               </label>
@@ -117,19 +117,19 @@ export default function SignUpForm() {
                 type="text"
                 id="firstName"
                 {...register("first_name")}
-                className={` block w-full py-3 px-2 bg-transparent border-2 border-blue-500 rounded-[10px] ${
+                className={` block w-full py-2 px-3 bg-transparent border-2 border-blue-500 rounded-lg ${
                   errors.first_name ? "border-red-500" : ""
                 }`}
               />
               {errors.first_name && (
-                <p className="text-red-500">{errors.first_name.message}</p>
+                <p className="text-red-500 text-sm mt-1">{errors.first_name.message}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="lastName"
-                className="block text-xl font-medium text-gray-700"
+                className="block text-lg lg:text-xl font-medium text-gray-700"
               >
                 Last Name
               </label>
@@ -137,19 +137,19 @@ export default function SignUpForm() {
                 type="text"
                 id="lastName"
                 {...register("last_name")}
-                className={` block w-full py-3 px-2 bg-transparent border-2 border-blue-500 rounded-[10px] ${
+                className={` block w-full py-2 px-3 bg-transparent border-2 border-blue-500 rounded-lg ${
                   errors.last_name ? "border-red-500" : ""
                 }`}
               />
               {errors.last_name && (
-                <p className="text-red-500">{errors.last_name.message}</p>
+                <p className="text-red-500 text-sm mt-1">{errors.last_name.message}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="email"
-                className="block text-xl font-medium text-gray-700"
+                className="block text-lg lg:text-xl font-medium text-gray-700"
               >
                 Email
               </label>
@@ -157,19 +157,19 @@ export default function SignUpForm() {
                 type="email"
                 id="email"
                 {...register("email")}
-                className={`py-3 px-2 mt-1 block w-full bg-transparent border-2 border-blue-500 rounded-[10px] ${
+                className={` block w-full py-2 px-3 bg-transparent border-2 border-blue-500 rounded-lg ${
                   errors.email ? "border-red-500" : ""
                 }`}
               />
               {errors.email && (
-                <p className="text-red-500">{errors.email.message}</p>
+                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="phoneNumber"
-                className="block text-xl font-medium text-gray-700"
+                className="block text-lg lg:text-xl font-medium text-gray-700"
               >
                 Phone Number
               </label>
@@ -177,19 +177,19 @@ export default function SignUpForm() {
                 type="tel"
                 id="phoneNumber"
                 {...register("phone_number")}
-                className={`py-3 px-2 mt-1 block w-full bg-transparent border-2 border-blue-500 rounded-[10px] ${
+                className={` block w-full py-2 px-3 bg-transparent border-2 border-blue-500 rounded-lg ${
                   errors.phone_number ? "border-red-500" : ""
                 }`}
               />
               {errors.phone_number && (
-                <p className="text-red-500">{errors.phone_number.message}</p>
+                <p className="text-red-500 text-sm mt-1">{errors.phone_number.message}</p>
               )}
             </div>
 
             <div>
               <label
                 htmlFor="password"
-                className="block text-xl font-medium text-gray-700"
+                className="block text-lg lg:text-xl font-medium text-gray-700"
               >
                 Password
               </label>
@@ -198,7 +198,7 @@ export default function SignUpForm() {
                   type={showPassword ? "text" : "password"}
                   id="password"
                   {...register("password")}
-                  className={`py-3 px-2 mt-1 block w-full bg-transparent border-2 border-blue-500 rounded-[10px] ${
+                  className={`mt-1 block w-full py-2 px-3 bg-transparent border-2 border-blue-500 rounded-lg ${
                     errors.password ? "border-red-500" : ""
                   }`}
                 />
@@ -211,53 +211,50 @@ export default function SignUpForm() {
                 </button>
               </div>
               {errors.password && (
-                <p className="text-red-500">{errors.password.message}</p>
+                <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
               )}
             </div>
 
-            <div className="mb-4">
+            <div>
               <label
                 htmlFor="role"
-                className="block text-[24px] capitalize mb-2 text-gray-700"
+                className="block text-lg lg:text-xl font-medium text-gray-700"
               >
-                Role:
+                Role
               </label>
               <select
                 id="role"
                 {...register("role")}
-                className={`  w-full h-[45px] px-4 py-3 bg-white border ${
+                className={`mt-1 block w-full py-2 px-3 bg-white border-2 ${
                   errors.role ? "border-red-500" : "border-blue-500"
-                } rounded-md shadow-sm focus:outline-none focus:ring-brown-500 focus:border-brown-500`}
+                } rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500`}
               >
-                <option value="Role">Select a role</option>
+                <option value="">Select a role</option>
                 <option value="ADMIN">ADMIN</option>
                 <option value="Estate_Associate">Estate Associate</option>
               </select>
               {errors.role && (
-                <p className="text-red-500 text-xs mt-1">
-                  {errors.role.message}
-                </p>
+                <p className="text-red-500 text-sm mt-1">{errors.role.message}</p>
               )}
             </div>
 
-            {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-            {successMessage && (
-              <p className="text-green-500">{successMessage}</p>
-            )}
+            {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+            {successMessage && <p className="text-green-500 text-sm">{successMessage}</p>}
 
             <div>
               <button
                 type="submit"
-                className={`w-44 mt-2 ml-[33%] flex justify-center bg-[#008fff] text-white py-2 font-bold rounded-[10px] hover:bg-[#EF5B1C]"
-              ${isSubmitting ? "opacity-40 cursor-not-allowed" : ""}`}
+                className={`w-full mt-4 flex justify-center bg-[#008fff] text-white py-2 px-4 font-bold rounded-lg hover:bg-[#EF5B1C] transition-colors duration-300 ${
+                  isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                }`}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Creating account..." : "Signup"}
+                {isSubmitting ? "Creating account..." : "Sign Up"}
               </button>
             </div>
           </form>
 
-          <p className=" text-xl text-center">
+          <p className="mt-4 text-center text-gray-600">
             Already have an account?{" "}
             <a href="/login" className="text-blue-500 hover:underline">
               Login
