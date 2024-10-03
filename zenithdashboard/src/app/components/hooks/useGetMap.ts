@@ -4,7 +4,7 @@ import { fetchSensorData } from "../utils/utils";
 export const useSensorData = () => {
   const [sensorData, setSensorData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null); // Ensure error is of type string or null
+  const [error, setError] = useState<string | null>(null); 
 
   useEffect(() => {
     const getData = async () => {
@@ -12,11 +12,11 @@ export const useSensorData = () => {
         const data = await fetchSensorData();
         setSensorData(data);
       } catch (err) {
-        // Type guard to check if the error is an instance of Error
+        
         if (err instanceof Error) {
-          setError(err.message); // Access the message safely
+          setError(err.message); 
         } else {
-          setError("An unknown error occurred"); // Fallback for unknown error types
+          setError("An unknown error occurred"); 
         }
       } finally {
         setLoading(false);

@@ -1,11 +1,16 @@
-export const fetchSensorData = async () => {
-    const BASE_URL = 'https://aquasense-e472a26d7581.herokuapp.com';
-    try {
-      const response = await fetch(`${BASE_URL}/api/devices/`); 
-      if (!response.ok) throw new Error('Failed to fetch sensor data');
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching sensor data:', error);
-      return [];
+ const url = '/api/sensortable/';
+  export const fetchSensorData = async () => {
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.status} - ${response.statusText}`);
     }
-  };
+    const data = await response.json();
+    return data;
+  } catch (error: any) {
+    console.error('Error in fetching drainage systems:', error.message);
+    throw error;
+  }
+};

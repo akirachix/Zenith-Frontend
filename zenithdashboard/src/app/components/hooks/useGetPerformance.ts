@@ -28,7 +28,7 @@ export const useGetPerformance = () => {
             } catch (err) {
                 console.error('Fetching data error:', err);
 
-                // Narrow down 'err' type to 'Error' before accessing 'message'
+        
                 if (err instanceof Error) {
                     setError(`Error fetching data: ${err.message}`);
                 } else {
