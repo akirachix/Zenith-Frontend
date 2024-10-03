@@ -6,7 +6,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import * as yup from "yup";
-import { postUser } from "../utils/postUser";
+import { setCookie } from "nookies";
+
+import { postUser } from "../components/utils/postUser";
 
 interface UserData {
   first_name: string;
@@ -52,11 +54,26 @@ export default function SignUpForm() {
   const onSubmit = async (data: UserData) => {
     try {
       const response = await postUser(data);
+      console.log(response);
 
       if (response.error) {
         setErrorMessage(response.error);
-      } else {
-        setSuccessMessage("Registration successful! Redirecting to Login");
+      } else if (response.data) {
+        const { token, userId } = response.data;
+
+        setCookie(null, "authToken", token, {
+          maxAge: 60 * 60 * 24 * 7,
+          path: "/",
+        });
+
+        setCookie(null, "userId", userId, {
+          maxAge: 60 * 60 * 24 * 7,
+          path: "/",
+        });
+
+        setSuccessMessage(
+          "Account created successfully! Redirecting to Login..."
+        );
         setTimeout(() => {
           reset();
           setSuccessMessage(null);
@@ -64,7 +81,11 @@ export default function SignUpForm() {
         }, 2000);
       }
     } catch (error) {
-      setErrorMessage((error as Error).message);
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage("An unexpected error occurred");
+      }
     }
   };
 
@@ -76,19 +97,19 @@ export default function SignUpForm() {
           alt="People assembling puzzle"
           width={600}
           height={600}
-          className="max-w-full h-auto mt-32"
+          className="max-w-full h-auto mt-20"
         />
       </div>
-      <div className="w-full md:w-1/2 flex items-start justify-center p-8">
-        <div className="max-w-md w-full mt-[-50px]">
-          <h2 className="text-[48px] font-bold mb-6 text-[#0088ff] text-center mt-8">
+      <div className="w-full md:w-1/2 flex items-start justify-center ">
+        <div className="max-w-md w-full">
+          <h2 className="text-[48px] font-bold mb-6 text-[#0088ff] text-center mt-10">
             Sign Up
           </h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 ">
             <div>
               <label
                 htmlFor="firstName"
-                className="block  font-medium text-gray-700 text-2xl"
+                className="block font-medium text-gray-700 text-2xl"
               >
                 First Name
               </label>
@@ -96,7 +117,7 @@ export default function SignUpForm() {
                 type="text"
                 id="firstName"
                 {...register("first_name")}
-                className={`mt-1 block w-full  py-2 px-4 bg-transparent border-2 border-blue-500 rounded-[30px] ${
+                className={` block w-full py-3 px-2 bg-transparent border-2 border-blue-500 rounded-[10px] ${
                   errors.first_name ? "border-red-500" : ""
                 }`}
               />
@@ -116,7 +137,7 @@ export default function SignUpForm() {
                 type="text"
                 id="lastName"
                 {...register("last_name")}
-                className={`mt-1 block w-full  py-2 px-4 bg-transparent border-2 border-blue-500 rounded-[30px] ${
+                className={` block w-full py-3 px-2 bg-transparent border-2 border-blue-500 rounded-[10px] ${
                   errors.last_name ? "border-red-500" : ""
                 }`}
               />
@@ -136,7 +157,7 @@ export default function SignUpForm() {
                 type="email"
                 id="email"
                 {...register("email")}
-                className={`py-2 px-4 mt-1 block w-full  bg-transparent border-2 border-blue-500 rounded-[30px] ${
+                className={`py-3 px-2 mt-1 block w-full bg-transparent border-2 border-blue-500 rounded-[10px] ${
                   errors.email ? "border-red-500" : ""
                 }`}
               />
@@ -156,7 +177,7 @@ export default function SignUpForm() {
                 type="tel"
                 id="phoneNumber"
                 {...register("phone_number")}
-                className={`py-2 px-4 mt-1 block w-full  bg-transparent border-2 border-blue-500 rounded-[30px] ${
+                className={`py-3 px-2 mt-1 block w-full bg-transparent border-2 border-blue-500 rounded-[10px] ${
                   errors.phone_number ? "border-red-500" : ""
                 }`}
               />
@@ -177,7 +198,7 @@ export default function SignUpForm() {
                   type={showPassword ? "text" : "password"}
                   id="password"
                   {...register("password")}
-                  className={`py-2 px-4 mt-1 block w-full  bg-transparent border-2 border-blue-500 rounded-[30px] ${
+                  className={`py-3 px-2 mt-1 block w-full bg-transparent border-2 border-blue-500 rounded-[10px] ${
                     errors.password ? "border-red-500" : ""
                   }`}
                 />
@@ -197,20 +218,20 @@ export default function SignUpForm() {
             <div className="mb-4">
               <label
                 htmlFor="role"
-                className="block text-[24px]  capitalize mb-2 text-gray-700"
+                className="block text-[24px] capitalize mb-2 text-gray-700"
               >
                 Role:
               </label>
               <select
                 id="role"
                 {...register("role")}
-                className={`mt-1 block w-full h-[45px] px-3 py-2 bg-white border ${
+                className={`  w-full h-[45px] px-4 py-3 bg-white border ${
                   errors.role ? "border-red-500" : "border-blue-500"
                 } rounded-md shadow-sm focus:outline-none focus:ring-brown-500 focus:border-brown-500`}
               >
                 <option value="Role">Select a role</option>
                 <option value="ADMIN">ADMIN</option>
-                <option value="Estate_Associate">Estate_Associate</option>
+                <option value="Estate_Associate">Estate Associate</option>
               </select>
               {errors.role && (
                 <p className="text-red-500 text-xs mt-1">
@@ -231,19 +252,14 @@ export default function SignUpForm() {
               ${isSubmitting ? "opacity-40 cursor-not-allowed" : ""}`}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Creating account...." : "Signup"}
+                {isSubmitting ? "Creating account..." : "Signup"}
               </button>
-              {successMessage && (
-                <p className="mt-2 text-green-500 text-center text-sm ml-30">
-                  {successMessage}
-                </p>
-              )}
             </div>
           </form>
 
-          <p className="mt-4 text-xl text-center">
+          <p className=" text-xl text-center">
             Already have an account?{" "}
-            <a href="#" className="text-blue-500 hover:underline">
+            <a href="/login" className="text-blue-500 hover:underline">
               Login
             </a>
           </p>
@@ -252,6 +268,3 @@ export default function SignUpForm() {
     </div>
   );
 }
-
-
-

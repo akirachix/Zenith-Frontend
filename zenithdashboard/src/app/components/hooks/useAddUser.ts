@@ -1,7 +1,6 @@
-import { UserData } from '../utils/types';
-import { useState } from 'react';
-import { postUser} from '../utils/postUser'
-
+import { UserData } from "../utils/types";
+import { useState } from "react";
+import { postUser } from "../utils/postUser";
 
 export const useCreateUser = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -11,13 +10,13 @@ export const useCreateUser = () => {
     setError(null);
     try {
       const result = await postUser(data);
-      console.log('Submission successful:', result);
+      console.log("Submission successful:", result);
       return true;
     } catch (err) {
       if (err instanceof Error) {
         setError(err);
       } else {
-        setError(new Error('An unknown error occurred'));
+        setError(new Error("An unknown error occurred"));
       }
       return false;
     } finally {
@@ -26,4 +25,3 @@ export const useCreateUser = () => {
   };
   return { submitNewUser, isSubmitting, error };
 };
-

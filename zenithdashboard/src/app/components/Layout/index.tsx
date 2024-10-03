@@ -1,6 +1,7 @@
 "use client";
-import React from 'react';
-import Sidebar from '../Sidebar';
+import React from "react";
+
+import Sidebar from "@/app/sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -8,9 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div>
         <Sidebar />
       </div>
-      <div className="flex-grow p-4">
-        {children}
-      </div>
+      <div className="flex-grow p-4">{children}</div>
     </div>
   );
 }

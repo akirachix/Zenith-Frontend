@@ -4,7 +4,7 @@
 import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { Home, BarChart2, Users, Settings, ChartLine } from 'lucide-react';
+import { Home, BarChart2, Settings,  } from 'lucide-react';
 
 const Sidebar = () => {
   const router = useRouter();
@@ -32,11 +32,9 @@ const Sidebar = () => {
         <Image src="/images/logo.png" alt="AquaSense Logo" width={270} height={180} className="" />
       </div>
       <nav className="space-y-9">
-        <SidebarItem icon={<Home size={24} />} label="Home" path="/"/>
-        <SidebarItem icon={<ChartLine size={20} />} label="RealTimeVisualization" path="/realtime" />
-        <SidebarItem icon={<BarChart2 size={24} />} label="System Performance" path="/performance" />
-        <SidebarItem icon={<Users size={24} />} label="User" path="/user" />
-        <SidebarItem icon={<Settings size={24} />} label="Settings" path="/settings" />
+        <SidebarItem icon={<Home size={24} />} label="Home" path="/dashboard" />
+        <SidebarItem icon={<BarChart2 size={24} />} label="System Performance" path="/systemperformance" />
+        <SidebarItem icon={<Settings size={24} />} label="Settings" path="/notifications" />
       </nav>
     </div>
   );

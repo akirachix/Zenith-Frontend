@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -9,14 +9,22 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-}
-  from "recharts";
-
-import { useDrainageData } from "../hooks/useData";
+} from "recharts";
+import { useRouter } from "next/navigation";
+import { getCookie } from "cookies-next";
+import { useDrainageData } from "../components/hooks/useData";
 import Layout from "../components/Layout";
 
 const Dashboard = () => {
+  const router = useRouter();
   const { data, loading, error } = useDrainageData();
+
+  useEffect(() => {
+    const isLoggedIn = getCookie("isLoggedIn");
+    if (!isLoggedIn) {
+      router.push("/dashboard");
+    }
+  }, [router]);
 
   const processLineChartData = (data: any[]) => {
     return data.map((item: any) => ({
@@ -25,6 +33,7 @@ const Dashboard = () => {
       waterPressure: item.water_pressure,
     }));
   };
+
   if (loading)
     return (
       <div className="flex justify-center items-center h-screen">
@@ -133,4 +142,5 @@ const Dashboard = () => {
     </Layout>
   );
 };
+
 export default Dashboard;

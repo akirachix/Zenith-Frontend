@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { processDrainageData } from '../utils/drainage';
+import { useEffect, useState } from "react";
+import { processDrainageData } from "../utils/drainage";
 export const useDrainageData = () => {
   const [data, setData] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -11,7 +11,7 @@ export const useDrainageData = () => {
         setData(processedData);
       } catch (error: any) {
         setError(`Error fetching data: ${error.message}`);
-        console.error('Error fetching data:', error.message);
+        console.error("Error fetching data:", error.message);
       } finally {
         setLoading(false);
       }
